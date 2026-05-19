@@ -1,4 +1,4 @@
-**I wrote a comprehensive blog explaining tiled light culling technique in Vulkan in detail. Read it [here](https://amrhmorsy.github.io/blog/2026/LightCulling/).**
+***I wrote a comprehensive blog explaining tiled light culling technique in Vulkan in detail. Read it [here](https://amrhmorsy.github.io/blog/2026/LightCulling/).***
 
 <br>
 <br>
