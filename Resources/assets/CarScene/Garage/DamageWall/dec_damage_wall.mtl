@@ -1,0 +1,13 @@
+# Blender 4.5.3 LTS MTL File: 'Scene.blend'
+# www.blender.org
+
+newmtl dec_damage_wall
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_damage_wall_Color.png
+map_d /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_damage_wall_Mask.png
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_damage_wall_Normal.png

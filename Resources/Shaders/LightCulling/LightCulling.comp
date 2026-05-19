@@ -1,0 +1,141 @@
+#version 450
+
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+
+layout(std430, binding = 0) readonly buffer LightBoundingSpheresViewSpace{
+    vec4 lightBoundingSpheresViewSpace[];
+};
+
+layout(std430, binding = 1) buffer TileLightCount {
+    uint tileLightCount[];
+};
+
+layout(std430, binding = 2) buffer TileLightIndices {
+    uint tileLightIndices[];
+};
+
+layout(std140, binding = 3) uniform LightCullingUniformVariables{
+    float nearClippingPlane;
+    float farClippingPlane;
+    uvec2 numTiles2D;
+    uint numCellsPerTile;
+};
+
+layout(std430, binding = 4) readonly buffer TileDepthMinMax{
+    vec2 tileDepthMinMax[];
+};
+
+layout(std430, binding = 5) readonly buffer TilesFrustumPlanes{
+    vec4 tilesFrustumPlanes[];
+};
+
+layout(std430, binding = 6) readonly buffer TilesGeometryBitMask{
+    uint tilesGeometryBitMask[];
+};
+
+layout(std430, binding = 7) buffer MaxLightCountBuffer{
+    uint globalMaxLightCount;
+};
+
+const uvec2 tileResolution = uvec2(16, 16);
+
+struct LightVisibilityInfo{
+    bool isVisible;
+    uint minCell;
+    uint maxCell;
+};
+
+uint ComputeCellIndex(float depth, float minDepth, float maxDepth)
+{
+    float depth01 = log(depth / minDepth) / log(maxDepth / minDepth);
+    uint cellIndex = uint(depth01 * float(numCellsPerTile));
+    
+    return max(min(cellIndex, numCellsPerTile - 1u), 0);
+}
+
+LightVisibilityInfo IsLightVisible(vec4 lightBoundingSphere, float minDepth, float maxDepth, uint tileGeometryBitMask, uint tileIndex)
+{
+    LightVisibilityInfo info;
+    
+    vec3 lightCenter = lightBoundingSphere.xyz;
+    float lightDepth = -lightBoundingSphere.z;
+    float radius = lightBoundingSphere.w;
+    
+    float lightMinDepth = lightDepth - radius;
+    float lightMaxDepth  = lightDepth + radius;
+    if(lightMaxDepth < minDepth) {
+        info.isVisible = false;
+        return info;
+    }
+    if(lightMinDepth > maxDepth) {
+        info.isVisible = false;
+        return info;
+    }
+
+    uint baseP = tileIndex * 4;
+        
+    for(int i = 0; i < 4; i++){
+        vec4 plane = tilesFrustumPlanes[baseP+i];
+        if(dot(plane, vec4(lightCenter, 1.0f)) < -radius){
+            info.isVisible = false;
+            return info;
+        }
+    }
+    
+    uint i1 = ComputeCellIndex(lightMinDepth, minDepth, maxDepth);
+    uint i2 = ComputeCellIndex(lightMaxDepth, minDepth, maxDepth);
+    
+    info.minCell = min(i1, i2);
+    info.maxCell = max(i1, i2);
+    
+    bool isDiscard = true;
+    for(uint i = info.minCell; i <= info.maxCell; i++){
+        if(((tileGeometryBitMask >> i) & 1u) == 1){
+            isDiscard = false;
+            break;
+        }
+    }
+    
+    if(isDiscard){
+        info.isVisible = false;
+        return info;
+    }
+
+    info.isVisible = true;
+    return info;
+}
+
+void main()
+{
+    uint threadIndex = (gl_LocalInvocationID.y * tileResolution.x) + gl_LocalInvocationID.x;
+    
+    uint numLights = lightBoundingSpheresViewSpace.length();
+    
+    uint tileIndex = (gl_WorkGroupID.y * uint(numTiles2D.x)) + gl_WorkGroupID.x;
+    
+    float minDepth = tileDepthMinMax[tileIndex].x;
+    
+    float maxDepth = tileDepthMinMax[tileIndex].y;
+    
+    uint tileGeometryBitMask = tilesGeometryBitMask[tileIndex];
+
+    uint baseC = tileIndex * numCellsPerTile;
+                    
+    if(threadIndex < numCellsPerTile)
+        tileLightCount[baseC+threadIndex] = 0;
+    
+    barrier();
+    
+    if(threadIndex < numLights){
+        vec4 lightBoundingSphere = lightBoundingSpheresViewSpace[threadIndex];
+        LightVisibilityInfo info = IsLightVisible(lightBoundingSphere, minDepth, maxDepth, tileGeometryBitMask, tileIndex);
+        if(info.isVisible){
+            uint baseI = tileIndex * numLights * numCellsPerTile;
+            for(uint j = info.minCell; j <= info.maxCell; j++){
+                uint i = atomicAdd(tileLightCount[baseC+j], 1);
+                atomicMax(globalMaxLightCount, i+1);
+                tileLightIndices[baseI+(j*numLights)+i] = threadIndex;
+            }
+        }
+    }
+}

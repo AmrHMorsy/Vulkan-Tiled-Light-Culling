@@ -1,0 +1,70 @@
+# Blender 4.5.3 LTS MTL File: 'Scene.blend'
+# www.blender.org
+
+newmtl mat_garage_concrete_slabs
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_concrete_slabs_Base_color.png
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_concrete_slabs_Roughness.png
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_concrete_slabs_Normal_OpenGL.png
+
+newmtl mat_garage_lamp
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_lamp_base_color.png
+map_Ke /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_lamp_base_color.png
+
+newmtl mat_garage_tool_table
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_tool_table_Roughness.png
+map_refl /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_tool_table_Metallic.png
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_tool_table_Normal_OpenGL.png
+
+newmtl mat_garage_wheel
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_wheel_BaseColor.png
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_wheel_Roughness.png
+map_refl /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_wheel_Metallic.png
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_wheel_Normal.png
+
+newmtl trim_garage_metal_grey
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_blue_BaseColor.png
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_Roughness.png
+map_refl /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_Metallic.png
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_Normal.png
+
+newmtl trim_garage_metal_red
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_BaseColor.png
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_Roughness.png
+map_refl /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/trim_garage_metal_Metallic.png

@@ -1,0 +1,14 @@
+# Blender 4.5.3 LTS MTL File: 'Scene.blend'
+# www.blender.org
+
+newmtl dec_garage_sewage
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_garage_sewage_BaseColor.png
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_garage_sewage_Roughness.png
+map_refl /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_garage_sewage_Metallic.png
+map_d /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_garage_sewage_alphamask.psd
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/dec_garage_sewage_Normal.png

@@ -1,0 +1,78 @@
+#version 450
+
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+
+layout(binding = 0) uniform sampler2D depthTexture;
+
+layout(std140, binding = 1) uniform DepthMinMaxUniformVariables{
+    float cameraNearPlane;
+    float cameraFarPlane;
+    uvec2 numTiles2D;
+    uint numCellsPerTile;
+};
+
+layout(std430, binding = 2) buffer TileDepthMinMax{
+    vec2 tileDepthMinMax[];
+};
+
+layout(std430, binding = 3) buffer TilesGeometryBitMask{
+    uint tilesGeometryBitMask[];
+};
+
+const uvec2 tileResolution = uvec2(16, 16);
+const uint numThreadsPerWorkGroup = tileResolution.x * tileResolution.y;
+
+shared vec2 threadDepths[numThreadsPerWorkGroup];
+
+uint ComputeCellIndex(float depth, float minDepth, float maxDepth)
+{
+    float depth01 = log(depth / minDepth) / log(maxDepth / minDepth);
+    uint cellIndex = uint(depth01 * float(numCellsPerTile));
+    
+    return max(min(cellIndex, numCellsPerTile - 1u), 0);
+}
+
+float LinearizeDepth(float depth)
+{
+    float z = depth * 2.0 - 1.0;
+    return (2.0 * cameraNearPlane * cameraFarPlane) / (cameraFarPlane + cameraNearPlane - z * (cameraFarPlane - cameraNearPlane));
+}
+
+/*float LinearizeDepth(float depth)
+{
+    return (cameraNearPlane * cameraFarPlane) / (cameraFarPlane - depth * (cameraFarPlane - cameraNearPlane));
+}
+*/
+
+void main()
+{
+    uint threadIndex = (gl_LocalInvocationID.y * tileResolution.x) + gl_LocalInvocationID.x;
+    
+    uint tileIndex = ((gl_WorkGroupID.y * uint(numTiles2D.x)) + gl_WorkGroupID.x);
+        
+    uvec2 textureCoordinates = (gl_WorkGroupID.xy * tileResolution) + gl_LocalInvocationID.xy;
+    
+    float depth = LinearizeDepth(texelFetch(depthTexture, ivec2(textureCoordinates), 0).r);
+    
+    threadDepths[threadIndex] = vec2(depth);
+    
+    barrier();
+    
+    for(uint stride = 1; stride < numThreadsPerWorkGroup; stride*=2){
+        if(threadIndex % (stride*2) == 0){
+            float minZ = min(threadDepths[threadIndex].x, threadDepths[threadIndex + stride].x);
+            float maxZ = max(threadDepths[threadIndex].y, threadDepths[threadIndex + stride].y);
+            threadDepths[threadIndex] = vec2(minZ, maxZ);
+        }
+        barrier();
+    }
+    
+    float minDepth = threadDepths[0].x;
+    float maxDepth = threadDepths[0].y;
+    
+    if(threadIndex == 0)
+        tileDepthMinMax[tileIndex] = vec2(minDepth, maxDepth);
+        
+    uint threadCellIndex = ComputeCellIndex(depth, minDepth, maxDepth);
+    atomicOr(tilesGeometryBitMask[tileIndex], 1u << threadCellIndex);
+}

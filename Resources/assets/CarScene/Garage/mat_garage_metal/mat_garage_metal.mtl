@@ -1,0 +1,24 @@
+# Blender 4.5.3 LTS MTL File: 'Scene.blend'
+# www.blender.org
+
+newmtl mat_garage_floor
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_floor_diffuseOriginal.bmp
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_floor_normal.bmp
+
+newmtl mat_garage_metal
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_metal_BaseColor.png
+map_Ns /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_metal_Roughness.png
+map_Bump -bm 1.000000 /Users/amrmorsy/Desktop/Vejaler.app/Contents/Resources/mat_garage_metal_Normal.png
