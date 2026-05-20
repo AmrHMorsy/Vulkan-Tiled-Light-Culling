@@ -3,7 +3,7 @@
 <br>
 <br>
 
-A real-time minimal demo in <b>C++</b> and <b>Vulkan</b> that demonstrates light culling. It features: 
+A real-time minimal demo in <b>C++</b> and <b>Vulkan</b> that demonstrates tiled light culling. It features: 
 
 - A simple shading model that supports lighting
 - A simple UI with a performance panel displaying metrics such as FPS, triangles count, and time-per-frame.
@@ -37,7 +37,7 @@ A real-time minimal demo in <b>C++</b> and <b>Vulkan</b> that demonstrates light
 
 <p align="center">
   <img src="Results/Depth.png" width="49%"/>
-  <img src="Results/WireFrame.png" width="49%"/>
+  <img src="Results/Scene2.png" width="49%"/>
 </p>
 
 <br>
