@@ -22,42 +22,40 @@ A real-time minimal demo in <b>C++</b> and <b>Vulkan</b> that demonstrates tiled
 <br>
 <br>
 
-<p align="center">
-  <img src="Results/Scene.png" width="49%"/>
-  <img src="Results/HeatMap.png" width="49%"/>
-</p>
+<table align="center">
+<tr>
+<td align="center">
+<img src="Results/Scene.png" width="100%"/><br>
+<b>Scene with light culling</b>
+</td>
 
-<p align="center">
-  <sub><b>Scene with light culling</b></sub>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub><b>Heatmap</b></sub>
-</p>
+<td align="center">
+<img src="Results/HeatMap.png" width="100%"/><br>
+<b>Light Count Heatmap</b>
+</td>
+</tr>
 
-<br>
+<tr>
+<td align="center">
+<img src="Results/Scene2.png" width="100%"/><br>
+<b>Scene without light culling</b>
+</td>
 
-<p align="center">
-  <img src="Results/Albedo.png" width="49%"/>
-  <img src="Results/Normal.png" width="49%"/>
-</p>
+<td align="center">
+<img src="Results/Normal.png" width="100%"/><br>
+<b>Normal</b>
+</td>
+</tr>
 
-<p align="center">
-  <sub><b>Albedo</b></sub>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub><b>Normal</b></sub>
-</p>
+<tr>
+<td align="center">
+<img src="Results/Depth.png" width="100%"/><br>
+<b>Depth</b>
+</td>
 
-<br>
-
-<p align="center">
-  <img src="Results/Depth.png" width="49%"/>
-  <img src="Results/Scene2.png" width="49%"/>
-</p>
-
-<p align="center">
-  <sub><b>Depth</b></sub>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <sub><b>Scene without light culling</b></sub>
-</p>
-
-<br>
-
+<td align="center">
+<img src="Results/Albedo.png" width="100%"/><br>
+<b>Albedo</b>
+</td>
+</tr>
+</table>
