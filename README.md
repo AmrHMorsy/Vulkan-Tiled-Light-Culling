@@ -22,41 +22,22 @@ A real-time minimal demo in <b>C++</b> and <b>Vulkan</b> that demonstrates light
 <br>
 
 <p align="center">
-  <img src="Results/Scene.png" width="100%"/>
-  <br/>
-  <em>Scene</em>
+  <img src="Results/Scene.png" width="49%"/>
+  <img src="Results/HeatMap.png" width="49%"/>
 </p>
 
 <br>
 
 <p align="center">
-  <img src="Results/HeatMap.png" width="100%"/>
-  <br/>
-  <em>Heat Map</em>
+  <img src="Results/Albedo.png" width="49%"/>
+  <img src="Results/Normal.png" width="49%"/>
 </p>
 
 <br>
 
 <p align="center">
-  <img src="Results/Albedo.png" width="100%"/>
-  <br/>
-  <em>Albedo</em>
-</p>
-
-<br>
-
-<p align="center">
-  <img src="Results/Normal.png" width="100%"/>
-  <br/>
-  <em>Normal</em>
-</p>
-
-<br>
-
-<p align="center">
-  <img src="Results/Depth.png" width="100%"/>
-  <br/>
-  <em>Depth</em>
+  <img src="Results/Depth.png" width="49%"/>
+  <img src="Results/WireFrame.png" width="49%"/>
 </p>
 
 <br>
